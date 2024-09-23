@@ -9,15 +9,15 @@ public class Main {
         double[] x = new double[19];
 
         double min = -14.0d, max = 10.0d;
-        for (int i = 0; i < x.length; i++) {
+        for (int i = 0; i < 19; i++) {
             x[i] = Math.random() * (max - min) + min;
         }
 
-        double[][] с1 = new double[13][19];
+        double[][] z1 = new double[13][19];
 
         for (int i = 0; i < 13; i++) {
             for (int j = 0; j < 19; j++) {
-                с1[i][j] = switch ((int) z[i]) {
+                z1[i][j] = switch ((int) z[i]) {
                     case 9, 11, 12, 15, 16, 17:
                         yield Math.cbrt(Math.cbrt(Math.cbrt(x[j])));
                     case 7:
@@ -28,7 +28,7 @@ public class Main {
             }
         }
 
-        for (double[] f : с1) {
+        for (double[] f : z1) {
             for (double e1 : f) {
                 System.out.printf("%9.5f", e1);
             }
