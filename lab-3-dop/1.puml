@@ -1,0 +1,280 @@
+@startuml
+abstract class Creature {
+    + name: String
+    + position: String
+    + orientation: String
+    + getName(): String
+    + getPosition(): String
+    + getGravity(): String
+    + setName(name: String): void
+    + setName(position: String): void
+    + setName(orientation: String): void
+
+}
+
+class Neznaika {
+    + avoid(): void
+    + dontfeel(): void
+    + weightlessness(): void
+    + forget(): String
+    + steps(): String
+    + justice(): String
+    + strong(): String
+    + thinner_than(name): String
+    + walkedAhead(WalkTypes parametres): void
+    + upsideDown(UpsidePosition: parametres):void
+    + toString(): String
+    + equals(Object): boolean
+    + hashCode(): int
+}
+
+class BodyPart {
+    + toString(): String
+}
+
+class Ponchik {
+    + avoid(): void
+    + dontfeel(): void
+    + weightlessness(): void
+    + forget(): String
+    + understood(): String
+    + afraid_about_state(): String
+    + feeling_about_all(): String
+    + feeling_over(): String
+    + opinion(): String
+    + threw_up_hands(): String
+    + went_obediently(): String
+    + Feeling(): void
+    + toString(): String
+    + equals(Object): boolean
+    + hashCode(): int
+}
+enum WalkTypes {
+    AHEAD
+    BEHIND
+    - type: string
+    + Type(): String
+}
+enum ExwNorm {
+    NOTNORM
+    NORM
+    - type: string
+    + Type(): String
+}
+
+enum ETC_enum {
+    LESSN
+    LESS
+    MORE
+    - type: string
+    + Type(): String
+}
+enum BodyType {
+    UP
+    DOWN
+    - type: string
+    + Type(): String
+}
+enum WeightType {
+    NORMAL
+    GOOD
+    - type: string
+    + Type(): String
+}
+enum Extra {
+    EXTRA
+    - type: string
+    + Type(): String
+}
+
+enum Clarification {
+    VERY
+    NOTVERY
+    - type: string
+    + Type(): String
+}
+enum AttractionStrength {
+    STRONG
+    WEAK
+    EQUAL
+    - type: string
+    + Type(): String
+}
+enum UpsidePosition {
+    UP
+    DOWN
+    - type: string
+    + Type(): String
+}
+enum BootsTight {
+    TIGHT
+    - type: string
+    + Type(): String
+}
+
+enum WeightlessnessTime {
+    LONG
+    SHORT
+    - type: string
+    + Type(): String
+}
+enum GravityStrength {
+    MORE
+    LESS
+    - type: string
+    + Type(): String
+}
+enum LegsPosition {
+    UP
+    DOWN
+    - type: string
+    + Type(): String
+}
+enum Light {
+    LG
+    DARK
+    - type: string
+    + Type(): String
+}
+enum Fly {
+    UP
+    DOWN
+    - type: string
+    + Type(): String
+}
+enum State {
+    STRONG
+    FAT
+    - type: string
+    + Type(): String
+}
+
+
+interface GetWeight {
+    + getweight(name1, p1, p2, name2): void
+}
+interface Jump {
+    + jump(name1, name2, name3, name4): void
+}
+interface Afraid {
+    + afraid(name1, name2, name3, name4): void
+}
+interface Imagine {
+    + imagine(): void
+}
+
+interface Сomparison {
+    + comparison(name1, name2): void
+}
+interface ExactСomparison {
+    + exactcomparison(name1, name2, p1, p2): void
+}
+interface Force {
+    + force(): void
+}
+
+
+interface Justice {
+    + justice(): void
+}
+
+
+class СreatureObj {
+    + name
+    getName(): String
+    + toString(): String
+    + equals(Object): boolean
+    + hashCode(): int
+}
+class SpaceBody {
+    + name
+    getName(): String
+    + toString(): String
+    + equals(Object): boolean
+    + hashCode(): int
+}
+
+
+''''''''''''''''''''''''
+class Location {
+    + name
+    + getName(): String
+    + toString(): String
+    + equals(Object): boolean
+    + hashCode(): int
+}
+
+interface MountainUP {
+    + mountain_up(name1, name3): void
+}
+enum Distance {
+    NORFAR
+    FAR
+    - type: string
+    + Type(): String
+}
+enum Cloud {
+    CLOUD
+    - type: string
+    + Type(): String
+}
+interface Road {
+    + road(name1): void
+}
+
+class SpaceBoots {
+    + size
+    + material
+    + attachToSurface()
+    + toString(): String
+    + equals(Object): boolean
+    + hashCode(): int
+}
+
+
+class CelestialBody {
+    + name
+    + gravity
+    + getName(): String
+    + getGravity(): String
+    + toString(): String
+    + equals(Object): boolean
+    + hashCode(): int
+}
+
+
+
+Creature --> Neznaika
+Creature --> Ponchik
+
+
+Neznaika --> Imagine
+Neznaika ---> Afraid
+Neznaika --> GetWeight
+Neznaika --> Jump
+Ponchik --> GetWeight
+Ponchik -- Jump
+
+
+CelestialBody --> ExactСomparison
+CelestialBody --> Сomparison
+Neznaika --> Force
+Force --> BootsTight
+Neznaika ---> WeightlessnessTime
+Neznaika ---> WalkTypes
+Сomparison --> AttractionStrength
+ExactСomparison --> GravityStrength
+GetWeight ---> WeightType
+Ponchik ----> LegsPosition
+Neznaika ----> UpsidePosition
+Afraid --> Fly
+BodyPart --> MountainUP
+BodyPart --> Road
+MountainUP --> Distance
+MountainUP --> Cloud
+Neznaika ---> State
+Neznaika --> Clarification
+Location --> Light
+Neznaika ----> Justice
+@enduml
+
