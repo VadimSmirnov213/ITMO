@@ -1,0 +1,38 @@
+[
+  {
+    "id": 2,
+    "name": "e",
+    "coordinates": {
+      "x": 4,
+      "y": 5.0
+    },
+    "creationDate": "2025-03-07",
+    "realHero": true,
+    "hasToothpick": true,
+    "impactSpeed": 34.0,
+    "weaponType": "BAT",
+    "mood": "RAGE",
+    "car": {
+      "name": "",
+      "cool": false
+    }
+  },
+  {
+    "id": 5,
+    "name": "Boddb",
+    "coordinates": {
+      "x": 125,
+      "y": 30.0
+    },
+    "creationDate": "2025-03-07",
+    "realHero": false,
+    "hasToothpick": true,
+    "impactSpeed": 200.0,
+    "weaponType": "SHOTGUN",
+    "mood": "FRENZY",
+    "car": {
+      "name": "Tesla",
+      "cool": false
+    }
+  }
+]
