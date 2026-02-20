@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Lab 3 — Main Screen</title>
+    <h:outputStylesheet library="css" name="styles.css"/>
+    <h:outputScript library="js" name="main.js"/>
+</h:head>
+<h:body>
+<div class="page">
+    <header class="page__header">
+        <div class="page__title">Веб-программирование, ЛР-3</div>
+        <div class="page__subtitle">Смирнов Вадим Константинович, P3219, вариант 38961</div>
+    </header>
+
+    <main class="workspace">
+        <section class="card inputs-card">
+            <h:form id="pointForm">
+                <h2>Введите X:</h2>
+                <div class="field">
+                    <p:inputText id="xInput" value="#{pointRequestDto.x}" 
+                                 type="number" min="-3" max="5" step="0.1" 
+                                 placeholder="от -3 до 5" styleClass="form-input"/>
+                    <small>Допустимый диапазон: [-3; 5]</small>
+                    <p:message for="xInput" display="text"/>
+                </div>
+
+                <h2>Выберите Y:</h2>
+                <div class="field slider-field">
+                    <label for="ySlider">Текущее значение: <h:outputText id="yValue" value="#{pointRequestDto.y != null ? pointRequestDto.y.intValue() : 0}"/></label>
+                    <h:inputHidden id="yHidden" value="#{pointRequestDto.y}"/>
+                    <input type="range" id="ySlider" min="-2" max="2" step="1" 
+                           value="#{pointRequestDto.y != null ? pointRequestDto.y.intValue() : 0}"
+                           class="slider-control" oninput="updateYValue(this.value)"/>
+                    <small>Шаг 1, диапазон [-2; 2]</small>
+                </div>
+
+                <h2>Выберите R:</h2>
+                <div class="field slider-field">
+                    <label for="rSlider">Текущее значение: <h:outputText id="rValue" value="#{pointRequestDto.r != null ? pointRequestDto.r : 2}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                    </h:outputText></label>
+                    <h:inputHidden id="rHidden" value="#{pointRequestDto.r}"/>
+                    <input type="range" id="rSlider" min="1" max="4" step="0.25" 
+                           value="#{pointRequestDto.r != null ? pointRequestDto.r : 2}"
+                           class="slider-control" oninput="updateRValue(this.value)"/>
+                    <small>Шаг 0.25, диапазон [1; 4]</small>
+                </div>
+
+                <div class="actions">
+                    <p:commandButton id="checkButton" value="Проверить" 
+                                     action="#{pointController.checkPoint()}"
+                                     update="resultsTable messages"
+                                     oncomplete="updateGraph(true);"
+                                     process="@form"/>
+                    <p:commandButton id="clearButton" value="Сбросить" 
+                                     action="#{resultsController.clear()}"
+                                     update="resultsTable"
+                                     oncomplete="updateGraph(true)"
+                                     styleClass="secondary"/>
+                </div>
+
+                <p:messages id="messages" autoUpdate="true" closable="true"/>
+            </h:form>
+        </section>
+
+        <section class="card graph-card">
+            <h2>Область</h2>
+            <div class="svg-container" id="graphArea">
+                <svg id="areaSvg" width="400" height="400" viewBox="0 0 400 400" aria-label="График области">
+                    <defs>
+                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e0d9c0" stroke-width="1"/>
+                        </pattern>
+                    </defs>
+                    <rect width="400" height="400" fill="#f7f4dc"/>
+                    <rect width="400" height="400" fill="url(#grid)"/>
+                    <g id="areaGroup"></g>
+                    <g id="axesGroup"></g>
+                    <g id="pointsGroup"></g>
+                    <g id="tempPointsGroup"></g>
+                </svg>
+            </div>
+        </section>
+
+        <section class="card results-card">
+            <h2>Результаты</h2>
+            <p:dataTable id="resultsTable" value="#{resultsController.all}" var="point" 
+                         emptyMessage="Точки ещё не проверялись"
+                         styleClass="results-table">
+                <p:column headerText="X">
+                    <h:outputText value="#{point.x}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Y">
+                    <h:outputText value="#{point.y}">
+                        <f:convertNumber maxFractionDigits="0"/>
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="R">
+                    <h:outputText value="#{point.r}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Время">
+                    <h:outputText value="#{point.formattedTime}"/>
+                </p:column>
+                <p:column headerText="Попадание">
+                    <h:outputText value="#{point.hitText}" 
+                                   styleClass="#{point.hit ? 'hit' : 'miss'}"/>
+                </p:column>
+            </p:dataTable>
+        </section>
+    </main>
+
+    <footer class="page__footer">
+        <h:link outcome="/hello.xhtml" value="← Назад" styleClass="back-button"/>
+        <span>ИТМО 2025</span>
+    </footer>
+</div>
+</h:body>
+</html>

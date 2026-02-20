@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Lab 3 — Проверка Jetty</title>
+    <h:outputStylesheet library="css" name="styles.css"/>
+    <h:outputScript library="js" name="main.js"/>
+    
+    <script>
+        function updateDateTime() {
+            var now = new Date();
+            var options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit',
+                timeZoneName: 'short'
+            };
+            var dateTimeString = now.toLocaleDateString('ru-RU', options);
+            document.getElementById('currentDateTime').textContent = dateTimeString;
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDateTime();
+            setInterval(updateDateTime, 9000);
+        });
+    </script>
+</h:head>
+<h:body>
+<div class="page">
+    <header class="page__header">
+        <div>
+            <div class="page__title">Веб-программирование, ЛР-3</div>
+            <div class="page__subtitle">Смирнов Вадим Константинович, P3219, вариант 38961</div>
+        </div>
+        <div id="pageClock" class="page__clock" aria-live="polite">&#160;</div>
+    </header>
+
+    <main class="workspace">
+        <section class="card">
+            <h:form id="infoForm">
+                <h2>Текущая дата и время</h2>
+                
+                <div style="text-align: center; margin: 20px 0;">
+                    <div id="currentDateTime" style="font-size: 1.5em; font-weight: bold; color: #2c3e50; padding: 20px; background-color: #f8f9fa; border-radius: 8px; border: 2px solid #e9ecef;">
+                        Загрузка...
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.9em; color: #6c757d;">
+                        Обновляется каждые 9 секунд
+                    </div>
+                </div>
+
+                <h:panelGroup style="margin-top:24px; display:block; text-align: center;">
+                    <h:link outcome="/main.xhtml" value="Перейти к основному приложению" styleClass="page__link-button"/>
+                </h:panelGroup>
+
+            </h:form>
+        </section>
+    </main>
+
+    <footer class="page__footer">
+        <span>ИТМО 2025</span>
+    </footer>
+</div>
+</h:body>
+</html>
