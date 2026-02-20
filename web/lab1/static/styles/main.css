@@ -1,0 +1,350 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #F5F5DC;
+    color: #8B4513;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    background-color: #D2B48C;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-title {
+    color: #8B4513;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.main {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+.form-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+}
+
+.form-section {
+    flex: 1;
+    min-width: 300px;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    color: #8B4513;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.radio-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.radio-label:hover {
+    background-color: rgba(139, 69, 19, 0.1);
+}
+
+.radio-label input[type="radio"] {
+    margin: 0;
+    width: auto;
+}
+
+.radio-label span {
+    color: #8B4513;
+    font-weight: 500;
+}
+
+.form-input {
+    padding: 0.75rem;
+    border: 2px solid #D2B48C;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #8B4513;
+    background-color: white;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #8B4513;
+    box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+}
+
+.quick-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.quick-btn {
+    padding: 0.5rem 0.75rem;
+    background-color: #D2B48C;
+    color: #8B4513;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.quick-btn:hover {
+    background-color: #8B4513;
+    color: #F5F5DC;
+    transform: translateY(-2px);
+}
+
+.form-select {
+    padding: 0.75rem;
+    border: 2px solid #D2B48C;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #8B4513;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    min-width: 150px;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #8B4513;
+    box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+}
+
+.form-select option {
+    color: #8B4513;
+    background-color: white;
+}
+
+.check-button {
+    padding: 1rem 2rem;
+    background-color: #800060;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+}
+
+.check-button:hover {
+    background-color: #4B0082;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+}
+
+.graph-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.graph-container {
+    background-color: white;
+    border: 2px solid #DC143C;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.graph-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.compact-results {
+    width: 100%;
+    max-width: 450px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.compact-title {
+    color: #8B4513;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.8rem;
+}
+
+.compact-table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.compact-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+
+.compact-table thead {
+    background-color: #D2B48C;
+}
+
+.compact-table th {
+    color: #8B4513;
+    padding: 0.6rem 0.4rem;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #8B4513;
+    font-size: 0.85rem;
+}
+
+.compact-table td {
+    padding: 0.5rem 0.3rem;
+    text-align: center;
+    border-bottom: 1px solid #D2B48C;
+    color: #8B4513;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.compact-table td:nth-child(4) {
+    font-size: 0.7rem;
+}
+
+.compact-table tbody tr:hover {
+    background-color: rgba(210, 180, 140, 0.2);
+}
+
+.compact-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.result-hit {
+    color: #228B22;
+    font-weight: bold;
+}
+
+.result-miss {
+    color: #DC143C;
+    font-weight: bold;
+}
+
+.footer {
+    background-color: #D2B48C;
+    color: #8B4513;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 1.5rem;
+    }
+    
+    .form-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .graph-section {
+        align-items: center;
+    }
+    
+    .compact-results {
+        max-width: 100%;
+    }
+    
+    .radio-group {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 1.2rem;
+    }
+    
+    .form-container {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .radio-group {
+        grid-template-columns: 1fr;
+    }
+    
+    .quick-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .check-button {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* Стили для баннера согласия на cookies */

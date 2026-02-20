@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+group = 'ru.rmntim.web'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation files('./libs/fastcgi-lib.jar')
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
+    implementation 'org.glassfish:jakarta.el:4.0.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// Настройка JVM аргументов для устранения предупреждений о native access
+tasks.withType(JavaExec) {
+    jvmArgs += ['--enable-native-access=ALL-UNNAMED']
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    exclude 'module-info.class'
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA'
+    manifest {
+        attributes(
+                'Main-Class': 'ru.rmntim.web.Main'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    archiveFileName = 'app.jar'
+}
+
+
+task testJar(type: Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    exclude 'module-info.class'
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA'
+    manifest {
+        attributes(
+                'Main-Class': 'ru.rmntim.web.TestServer'
+        )
+    }
+    from sourceSets.main.output
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    archiveFileName = 'test-server.jar'
+}
+
+
+task buildAll {
+    dependsOn jar, testJar
+    description = 'Builds both app.jar (for Helios) and test-server.jar (for local testing)'
+}

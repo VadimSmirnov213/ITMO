@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой сайт</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title">Веб-программироване, ЛР-1, Вариант-467509</h1>
+            <h5 class="header-title">Смирнов Вадим Константинович, P3219</h5>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-section">
+                    <form class="input-form" id="mainForm">
+                        <div class="form-group">
+                            <label class="form-label">Введите X:</label>
+                            <input type="text" id="x" name="x" class="form-input" placeholder="(от -5 до 3)">
+                            <div class="quick-buttons">
+                                <button type="button" class="quick-btn" data-value="-5">-5</button>
+                                <button type="button" class="quick-btn" data-value="-4">-4</button>
+                                <button type="button" class="quick-btn" data-value="-3">-3</button>
+                                <button type="button" class="quick-btn" data-value="-2">-2</button>
+                                <button type="button" class="quick-btn" data-value="-1">-1</button>
+                                <button type="button" class="quick-btn" data-value="0">0</button>
+                                <button type="button" class="quick-btn" data-value="1">1</button>
+                                <button type="button" class="quick-btn" data-value="2">2</button>
+                                <button type="button" class="quick-btn" data-value="3">3</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Выберите Y:</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="y" value="-5">
+                                    <span>-5</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="y" value="-4">
+                                    <span>-4</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="y" value="-3">
+                                    <span>-3</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="y" value="-2">
+                                    <span>-2</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="y" value="-1">
+                                    <span>-1</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="y" value="0" checked>
+                                    <span>0</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="y" value="1">
+                                    <span>1</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="y" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="y" value="3">
+                                    <span>3</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Выберите R:</label>
+                            <select id="r" name="r" class="form-select">
+                                <option value="">Выберите R</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="check-button">ПРОВЕРИТЬ</button>
+                    </form>
+                </div>
+
+                <div class="graph-section">
+                    <div class="graph-container">
+                        <img src="img/schedule.png" alt="График" class="graph-image">
+                    </div>
+                    
+                    <div class="compact-results">
+                        <h4 class="compact-title">Результаты</h4>
+                        <div class="compact-table-container">
+                            <table class="compact-table" id="resultsTable">
+                                <thead>
+                                    <tr>
+                                        <th>X</th>
+                                        <th>Y</th>
+                                        <th>R</th>
+                                        <th>Время</th>
+                                        <th>Рез.</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="resultsTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>ИТМО 2025</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=3.1"></script>
+</body>
+</html>
